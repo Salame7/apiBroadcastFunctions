@@ -6,7 +6,6 @@ La API **apiGrowthFunctions** permite la gestión del crecimiento de los bebés 
 ## Tecnologías Utilizadas
 - **AWS Lambda** para la ejecución sin servidor.
 - **Amazon API Gateway** para la gestión de endpoints.
-- **Kinesis Video Streams** para la gestión de video en vivo.
 - **MongoDB** como base de datos.
 - **Express.js** como framework de backend.
 - **JWT (JSON Web Token)** para autenticación.
