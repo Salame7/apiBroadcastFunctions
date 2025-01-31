@@ -1,11 +1,12 @@
-# API Growth Functions
+# API Broadcast Functions
 
 ## Descripción
-La API **apiGrowthFunctions** permite la gestión del crecimiento de los bebés dentro de la plataforma. Incluye funcionalidades para registrar, actualizar y mostrar datos de crecimiento, tanto para los padres como para los cuidadores. Está desplegada en AWS Lambda y se comunica a través de Amazon API Gateway.
+La API **apiBroadcastFunctions** gestiona la transmisión de video en vivo y la integración con el bot de Telegram. Sus funcionalidades incluyen el acceso al video en vivo para padres y cuidadores, la obtención de la URL HLS para la transmisión y el registro de nuevos usuarios en el bot de Telegram. Está desplegada en AWS Lambda y utiliza Amazon API Gateway para su comunicación.
 
 ## Tecnologías Utilizadas
 - **AWS Lambda** para la ejecución sin servidor.
 - **Amazon API Gateway** para la gestión de endpoints.
+- **Kinesis Video Streams** para la gestión de video en vivo.
 - **MongoDB** como base de datos.
 - **Express.js** como framework de backend.
 - **JWT (JSON Web Token)** para autenticación.
@@ -20,6 +21,8 @@ La API **apiGrowthFunctions** permite la gestión del crecimiento de los bebés 
 4. **Variables de entorno** en AWS Lambda:
    - `MONGO_URI`: URL de conexión a MongoDB.
    - `JWT_SECRET`: Clave secreta para la autenticación.
+   - `KVS_STREAM_NAME`: Nombre del stream en Kinesis Video Streams.
+   - `TELEGRAM_BOT_TOKEN`: Token de autenticación del bot de Telegram.
 
 ### Instalación Local
 1. Clonar el repositorio:
