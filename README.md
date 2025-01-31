@@ -1,92 +1,49 @@
-<!--
-title: 'AWS Simple HTTP Endpoint example in NodeJS'
-description: 'This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.'
-layout: Doc
-framework: v3
-platform: AWS
-language: nodeJS
-authorLink: 'https://github.com/serverless'
-authorName: 'Serverless, inc.'
-authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
--->
+# API Growth Functions
 
-# Serverless Framework Node HTTP API on AWS
+## Descripción
+La API **apiGrowthFunctions** permite la gestión del crecimiento de los bebés dentro de la plataforma. Incluye funcionalidades para registrar, actualizar y mostrar datos de crecimiento, tanto para los padres como para los cuidadores. Está desplegada en AWS Lambda y se comunica a través de Amazon API Gateway.
 
-This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.
+## Tecnologías Utilizadas
+- **AWS Lambda** para la ejecución sin servidor.
+- **Amazon API Gateway** para la gestión de endpoints.
+- **Kinesis Video Streams** para la gestión de video en vivo.
+- **MongoDB** como base de datos.
+- **Express.js** como framework de backend.
+- **JWT (JSON Web Token)** para autenticación.
+- **Axios** para llamadas HTTP a otros servicios.
 
-This template does not include any kind of persistence (database). For more advanced examples, check out the [serverless/examples repository](https://github.com/serverless/examples/) which includes Typescript, Mongo, DynamoDB and other examples.
+## Instalación y Configuración
 
-## Usage
+### Prerequisitos
+1. **Node.js** instalado en el sistema.
+2. **Cuenta AWS** con permisos para Lambda y API Gateway.
+3. **MongoDB Atlas** o una instancia de MongoDB local.
+4. **Variables de entorno** en AWS Lambda:
+   - `MONGO_URI`: URL de conexión a MongoDB.
+   - `JWT_SECRET`: Clave secreta para la autenticación.
 
-### Deployment
+### Instalación Local
+1. Clonar el repositorio:
+   ```sh
+   git clone <url del repositorio>
+   cd <nombre del repositorio>
+   ```
+2. Instalar dependencias
+   ```
+   npm install
+   ```
+## Despliegue en AWS Lambda
+Para desplegar en AWS Lambda utilizando Serverless Framework:
 
-```
-$ serverless deploy
-```
-
-After deploying, you should see output similar to:
-
-```bash
-Deploying aws-node-http-api-project to stage dev (us-east-1)
-
-✔ Service deployed to stack aws-node-http-api-project-dev (152s)
-
-endpoint: GET - https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/
-functions:
-  hello: aws-node-http-api-project-dev-hello (1.9 kB)
-```
-
-_Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [http event docs](https://www.serverless.com/framework/docs/providers/aws/events/apigateway/).
-
-### Invocation
-
-After successful deployment, you can call the created application via HTTP:
-
-```bash
-curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
-```
-
-Which should result in response similar to the following (removed `input` content for brevity):
-
-```json
-{
-  "message": "Go Serverless v2.0! Your function executed successfully!",
-  "input": {
-    ...
-  }
-}
-```
-
-### Local development
-
-You can invoke your function locally by using the following command:
-
-```bash
-serverless invoke local --function hello
-```
-
-Which should result in response similar to the following:
-
-```
-{
-  "statusCode": 200,
-  "body": "{\n  \"message\": \"Go Serverless v3.0! Your function executed successfully!\",\n  \"input\": \"\"\n}"
-}
-```
-
-
-Alternatively, it is also possible to emulate API Gateway and Lambda locally by using `serverless-offline` plugin. In order to do that, execute the following command:
-
-```bash
-serverless plugin install -n serverless-offline
-```
-
-It will add the `serverless-offline` plugin to `devDependencies` in `package.json` file as well as will add it to `plugins` in `serverless.yml`.
-
-After installation, you can start local emulation with:
-
-```
-serverless offline
-```
-
-To learn more about the capabilities of `serverless-offline`, please refer to its [GitHub repository](https://github.com/dherault/serverless-offline).
+1. Instalar Serverless Framework:
+    ```sh
+    npm install -g serverless
+    ```
+2. Configurar AWS Credentials:
+    ```sh
+    serverless config credentials --provider aws --key <AWS_ACCESS_KEY> --secret <AWS_SECRET_KEY>
+    ```
+3. Desplegar la api
+    ```sh
+    serverless deploy
+    ```
